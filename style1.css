@@ -1,0 +1,176 @@
+body{
+   background: linear-gradient(to bottom, #30a634, #2c8c2f);
+   min-height: 700px;
+}
+main{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+    align-items: center;
+}
+.firstchild img{
+   height: 180px;
+   width: 170px ; 
+}
+.secondchild{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+}
+.secondgrandchild{
+   display:flex;
+   gap:10px;
+}
+.firstchild{
+   display: flex;
+   justify-content: center;
+}
+.firstgrandchild{
+   display: flex;
+   justify-content: center;
+   font-family: "poppins", sans-serif;
+   font-weight: 600;
+}
+.secondgrandchild{
+   display: flex;
+   justify-content: center;
+   font-family: "poppins", sans-serif;
+}
+.parent{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   border: solid;
+   border-width: 5px;
+   border-radius: 10px;
+   gap: 10px;
+   height:280px;
+   width:280px;
+}
+#pokemon-card{
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+#heading{
+   max-width: 62.5rem;
+}
+#main-heading{
+   font-family:  "orbitron", sans-serif;
+   font-size: 60px;
+   font-weight: 900;
+    background: linear-gradient(to right, #F8F8FF, #C0C0C0);
+    display: flex;
+    justify-content: center;
+ -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#sub-heading{
+   background: linear-gradient(to right,  #F8F8FF, #C0C0C0);
+
+   -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+   font-family:  "orbitron", sans-serif;
+   font-size: 30px;
+   font-weight: 600;
+   display: flex;
+    justify-content: center;
+}
+.search-container{
+   background-color:#30a634;
+   display: flex;
+   justify-content: space-around;
+   min-width: 500px;
+     gap:10px;
+     padding: 0.75rem;
+     border-radius:0.625rem ;
+}
+.pokemon{
+   font-size: 1rem;
+    width: 15rem;
+    color: rgb(17, 17, 17);
+    background-color: rgba(255, 255, 255, 0.894);
+    height: 3rem;
+    padding: 0px 0.75rem;
+    border-radius: 0.625rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(232, 232, 232, 0.835);
+    border-image: initial;
+    outline: none;
+}
+#context{
+   color: rgb(250, 248, 248);
+   font-size: 1.3rem;
+   font-weight: 540;
+   letter-spacing: -0.2px;
+   margin: 0px;
+}
+#outer-bound{
+   
+}
+nav{
+   position:sticky;
+    top:0;
+    z-index: 3;
+}
+.navbar{
+   display: flex;
+   justify-content: space-between;
+   backdrop-filter: blur(6px);
+}
+.logo{
+   font-size: 2rem;
+   color: aliceblue;
+   font-weight: 900;
+   margin: 0px;
+}
+.logo-secondpart{
+   position: relative;
+ text-decoration: none;
+ color: #d47714; 
+ padding-bottom: 1px;
+  
+}
+.logo-secondpart::after{
+   content: "";
+ position: absolute;
+ bottom: 0;
+ width: 0%;
+ height: 2px;
+ left: 50%;
+transform: translateX(-50%);
+ background: linear-gradient(90deg, #de7b18, #c38e12);
+ transition: width 0.4s cubic-bezier(.4,0,.2,1);
+}
+.logo-secondpart:hover::after{
+   height: 2px;
+   width: 100%;
+}
+.button1{
+   color: #161616;
+   font-family:"Poppins", sans-serif;
+   font-style: italic;
+   border-radius: 0.6rem;
+   font-size: 1.125rem;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   font-weight: 600;
+    cursor: pointer;
+    padding: 0.7rem 1.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background-color: aliceblue;
+   
+    
+}
+.button1:hover{
+   background-color: #fff;
+   border-color: #fff;
+   box-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
+}
+#buttons{
+   margin-top: 13px;
+}

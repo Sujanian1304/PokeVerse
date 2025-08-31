@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pokemon-cards</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script>
+         function createCard(pokemon){
+            let parent=document.createElement("div");
+              parent.setAttribute("class","parent");
+              let firstchild=document.createElement("div");
+              firstchild.setAttribute("class","firstchild");
+              let secondchild=document.createElement("div");
+              secondchild.setAttribute("class","secondchild");
+              let firstgrandchild=document.createElement("div");
+              firstgrandchild.setAttribute("class","firstgrandchild");
+              let secondgrandchild=document.createElement("div");
+              secondgrandchild.setAttribute("class","secondgrandchild");
+              let firstgreatgrand=document.createElement("span");
+              firstgreatgrand.setAttribute("class","firstgreatgrand");
+              let secgreatgrand=document.createElement("span");
+              secgreatgrand.setAttribute("class","secgreatgrand");
+              let thirdgreatgrand=document.createElement("span");
+              thirdgreatgrand.setAttribute("class","thirdgreatgrand");
+              firstgrandchild.innerHTML=`Name : ${pokemon.name}`;
+              firstgreatgrand.innerHTML=`HP : ${pokemon.hp}`;
+              secgreatgrand.innerHTML=`Attack : ${pokemon.attack}`;
+              thirdgreatgrand.innerHTML=`Defense : ${pokemon.defense}`;
+              secondchild.appendChild(firstgrandchild);
+              secondgrandchild.appendChild(firstgreatgrand);
+              secondgrandchild.appendChild(secgreatgrand);
+              secondgrandchild.appendChild(thirdgreatgrand);
+              secondchild.appendChild(secondgrandchild);
+              let image=document.createElement("img");
+              image.setAttribute("src",`${pokemon.image}`);
+              firstchild.appendChild(image);
+              parent.appendChild(firstchild);
+              parent.appendChild(secondchild);
+              return parent;
+         }
+         async function addpokemon(){
+            let finalparent=document.querySelector("#pokemon-card");
+            finalparent.innerHTML="";
+            let pokemontype=document.querySelector("#pokemon-type").value;
+            let pokemonumber=document.querySelector("#pokemon-number").value;
+              const response= await axios.get(`http://localhost:3002/cards?type=${pokemontype}&number=${pokemonumber}`);
+              console.log(response);
+              for(let i=0;i<response.data.length;i++){
+               let card=createCard(response.data[i]);
+              finalparent.appendChild(card);
+              }
+         }
+    </script>
+</head>
+<body>
+    <div id="hero">
+        <nav>
+            <div class="navbar">
+                <p class="logo">
+                    <img src="/public/logo.png" height="40px" width="40px">
+                    Poke
+                    <span class="logo-secondpart">Verse</span>
+                </p>
+                <div id="buttons">
+                <a class="button1" href="https://x.com/PiyushK11999452">Twitter</a>
+                <a class="button1" href="https://github.com/Sujanian1304">Star on GitHub</a>
+              </div>
+           </div>
+        </nav>
+    <main>
+        <div id="image">
+            <img src="/public/4image.png" height="290px" width="290px">
+            <img src="/public/6.png" height="300px" width="300px">
+            <img src="/public/7.png" height="300px" width="300px">
+        </div>
+    <div id="heading">
+        <h1 id="main-heading">Which Pokémon Awaits You?</h1>
+        <h1 id="sub-heading">Find Your Next Legendary!</h1>
+        <p id="context">
+            Unleash the power of Pokémon with Pokedeck. Select number of Pokémon cards you want to view and choose the perfect Pokémon type. Whether you're a casual fan or a dedicated collector, discover the full details of each Pokémon and expand your Poké-knowledge!
+        </p>
+    </div>
+    <div class="search-container">
+    <input class="pokemon" id="pokemon-type" type="text" placeholder="enter type">
+    <input class="pokemon" id="pokemon-number" type="text" placeholder="enter Number">
+    <button class="pokemon" id="search-button" onclick="addpokemon()">Fetch Cards</button>
+    </div>
+    <div id="outer-bound"><div id="pokemon-card"></div></div>
+</main>
+</div>
+</body>
+</html>
