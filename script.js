@@ -40,4 +40,8 @@ app.get("/cards",async (req,res)=>{
             res.status(404).json({message:"there was an error"});
         }
 })
-app.listen(3002)
+// app.listen(3002)
+
+app.listen(3002, ()=>{
+    console.log("Server started at 3002")
+})
