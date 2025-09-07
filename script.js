@@ -5,7 +5,6 @@ import { dirname } from 'path';
 import cors from "cors";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
 const P = new Pokedex();
 const app=express();
 app.use(express.json());
@@ -41,7 +40,6 @@ app.get("/cards",async (req,res)=>{
         }
 })
 // app.listen(3002)
-
-app.listen(3002, ()=>{
-    console.log("Server started at 3002")
-})
+app.listen(3002, '0.0.0.0', () => {
+  console.log("Server running at http://0.0.0.0:3002");
+});

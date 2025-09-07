@@ -52,7 +52,8 @@
               parent.appendChild(secondchild);
               return parent;
          }
-         async function addpokemon(){
+         async function addpokemon(e){
+            e.preventDefault();
             let ball=document.querySelector("#loader");
             ball.style.opacity=1;
             let finalparent=document.querySelector("#pokemon-card");
@@ -100,6 +101,7 @@
         </p>
     </div>
     <div class="search-container">
+        <form onsubmit="addpokemon(event)">
     <input class="pokemon" id="pokemon-type" type="text" placeholder="enter type" list="options">
     <datalist id="options">
           <option value="Normal">
@@ -121,8 +123,9 @@
             <option value="Steel">
             <option value="Fairy">
     </datalist>
-    <input class="pokemon" id="pokemon-number" type="text" placeholder="enter Number">
-    <button id="but" class="pokemon" id="search-button" onclick="addpokemon()">Fetch Cards</button>
+    <input class="pokemon" id="pokemon-number" type="number" max="100"  placeholder="enter Number">
+    <button id="but" class="pokemon" id="search-button" ">Fetch Cards</button>
+    </form>
     </div>
      <div id="loader" style="opacity: 0" >
          <div class="img-ball" ><img class="loader" src="/public/pokeball-pokemon-svgrepo-com.svg" height="30" width="30"></div>
