@@ -40,6 +40,6 @@ app.get("/cards",async (req,res)=>{
         }
 })
 // app.listen(3002)
-app.listen(3002, '0.0.0.0', () => {
-  console.log("Server running at http://0.0.0.0:3002");
+app.listen(3002, () => {
+  console.log("Server running at 3002");
 });
