@@ -1,5 +1,6 @@
 import express from "express";
 import Pokedex from 'pokedex-promise-v2';
+import path from "path";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cors from "cors";
@@ -9,6 +10,10 @@ const P = new Pokedex();
 const app=express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "index.html")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 app.get("/cards",async (req,res)=>{
     let pokemontype=req.query.type;
     let number=parseInt(req.query.number,10);
