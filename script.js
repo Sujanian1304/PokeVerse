@@ -40,6 +40,5 @@ app.get("/cards",async (req,res)=>{
         }
 })
 // app.listen(3002)
-app.listen(3002, () => {
-  console.log("Server running at 3002");
-});
+const PORT = process.env.PORT || 3002;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
