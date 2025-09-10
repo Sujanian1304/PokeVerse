@@ -10,6 +10,11 @@ const P = new Pokedex();
 const app=express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(express.static(__dirname));
+
 app.get("/cards",async (req,res)=>{
     let pokemontype=req.query.type;
     let number=parseInt(req.query.number,10);
@@ -40,9 +45,8 @@ app.get("/cards",async (req,res)=>{
             res.status(404).json({message:"there was an error"});
         }
 })
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
-});
+
+
 
 // app.listen(3002)
 const PORT = process.env.PORT || 3002;
