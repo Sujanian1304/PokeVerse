@@ -52,21 +52,33 @@
               parent.appendChild(secondchild);
               return parent;
          }
-         async function addpokemon(e){
-            e.preventDefault();
-            let ball=document.querySelector("#loader");
-            ball.style.opacity=1;
-            let finalparent=document.querySelector("#pokemon-card");
-            finalparent.innerHTML="";
-            let pokemontype=document.querySelector("#pokemon-type").value;
-            let pokemonumber=document.querySelector("#pokemon-number").value;
-              const response= await axios.get(`http://localhost:3002/cards?type=${pokemontype}&number=${pokemonumber}`);
-              for(let i=0;i<response.data.length;i++){
-               let card=createCard(response.data[i]);
-               setTimeout(()=>{ ball.style.opacity=0;
-              finalparent.appendChild(card);},1000)
+         const BASE_URL = window.location.hostname.includes("localhost")
+                           ? "http://localhost:3002"
+                           : "https://pokeverse-tv0e.onrender.com";
+
+            async function addpokemon(e) {
+              e.preventDefault();
+              let ball = document.querySelector("#loader");
+              ball.style.opacity = 1;
+              let finalparent = document.querySelector("#pokemon-card");
+              finalparent.innerHTML = "";
+            
+              let pokemontype = document.querySelector("#pokemon-type").value;
+              let pokemonumber = document.querySelector("#pokemon-number").value;
+            
+              const response = await axios.get(
+                `${BASE_URL}/cards?type=${pokemontype}&number=${pokemonumber}`
+              );
+            
+              for (let i = 0; i < response.data.length; i++) {
+                let card = createCard(response.data[i]);
+                setTimeout(() => {
+                  ball.style.opacity = 0;
+                  finalparent.appendChild(card);
+                }, 1000);
               }
-         }
+        }
+
     </script>
 </head>
 <body>
