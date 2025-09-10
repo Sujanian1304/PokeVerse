@@ -61,7 +61,6 @@
             let pokemontype=document.querySelector("#pokemon-type").value;
             let pokemonumber=document.querySelector("#pokemon-number").value;
               const response= await axios.get(`http://localhost:3002/cards?type=${pokemontype}&number=${pokemonumber}`);
-              console.log(response);
               for(let i=0;i<response.data.length;i++){
                let card=createCard(response.data[i]);
                setTimeout(()=>{ ball.style.opacity=0;
